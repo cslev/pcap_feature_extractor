@@ -228,6 +228,7 @@ elif METHOD == "tshark":
   TSHARK = True
 else:
   log(f"Uknown method {METHOD} defined...Nothing to do...exiting")
+  sys.exit(1)
 
 #create a thread for zeek
 #run zeek on the PCAP
