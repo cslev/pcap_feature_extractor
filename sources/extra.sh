@@ -46,6 +46,22 @@ num_colors=${#colors[@]}
 # -----------------------------------------------------------
 
 
+# Function to format the time
+function format_time () 
+{
+  local total_seconds=$1
+
+  if [ $total_seconds -lt 60 ]; then
+    echo "${total_seconds} seconds"
+  elif [ $total_seconds -lt 3600 ]; then
+    # Minutes and seconds
+    printf "%02d:%02d\n" $((total_seconds / 60)) $((total_seconds % 60))
+  else
+    # Hours, minutes, and seconds
+    printf "%02d:%02d:%02d\n" $((total_seconds / 3600)) $(( (total_seconds % 3600) / 60 )) $((total_seconds % 60))
+  fi
+}
+
 # ==================== USE THIS FUNCTION TO PRINT TO STDOUT =============
 # $1: color  - if not exists, then normal output is used
 # $2: text to print out
