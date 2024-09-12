@@ -56,4 +56,10 @@ These levels are as follows:
  The script runs each submodule as a separate thread to make processing parallel, hence fast.
  At the end, it also provides you information about how much time each thread took.
 
+ ## BASH version
+ There is also a BASH version if you don't want to use Python at all. The only difference is that the METHOD cannot be defined (I was too lazy to implement that), so both `zeek` and `tshark` will be used.
+ Initially, I thought that running the commands from BASH will make them automatically scale up (if needed) as the Python-based multiprocessing does not allow upscaling to more than one core (afaik).
+
+ Anyway, i tested it and `tshark` never go above 1 core, while `zeek` can. So, the BASH version can be slightly faster for the `zeek` outputs, but you anyway have to wait until the `tshark` processes finish.
+
  
